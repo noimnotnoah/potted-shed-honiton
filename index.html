@@ -5,123 +5,457 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Potted Shed — Plants & Garden Visits, Honiton</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #fdfbf7;
-    color: #3a3a36;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
-    line-height: 1.65;
-    padding: 0 20px;
-  }
-  .page {
-    max-width: 620px;
-    margin: 0 auto;
-    padding: 60px 0 80px;
-  }
-  h1 {
-    font-size: 2rem;
-    font-weight: normal;
-    color: #4a7c59;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.3em;
-  }
-  h1 span { display: none; }
-  .subtitle {
-    font-size: 0.95rem;
-    color: #7a7a6f;
-    font-style: italic;
-    margin-bottom: 2.5em;
-    border-bottom: 1px solid #e6e2d8;
-    padding-bottom: 1.2em;
-  }
-  h2 {
-    font-size: 1.1rem;
-    font-weight: normal;
-    color: #4a7c59;
-    margin-top: 2em;
-    margin-bottom: 0.4em;
-    letter-spacing: 0.02em;
-  }
-  h2:first-of-type { margin-top: 0; }
-  p, ul { margin-bottom: 1em; }
-  ul { list-style: none; padding-left: 0; }
-  li {
-    padding-left: 1.2em;
-    position: relative;
-    margin-bottom: 0.35em;
-  }
-  li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: #d4a373;
-  }
-  .highlight {
-    background: #f3f0e7;
-    padding: 1.2em 1.4em;
-    margin: 1.5em 0;
-    border-radius: 2px;
-  }
-  .highlight p { margin-bottom: 0.3em; }
-  .highlight p:last-child { margin-bottom: 0; }
-  .contact {
-    margin-top: 2.5em;
-    padding-top: 1.5em;
-    border-top: 1px solid #e6e2d8;
-    font-size: 0.95rem;
-  }
-  .contact strong { color: #4a7c59; }
-  a { color: #4a7c59; text-decoration: none; }
-  a:hover { border-bottom: 1px solid #d4a373; }
-  hr {
-    border: none;
-    border-top: 1px solid #e6e2d8;
-    margin: 2em 0;
-  }
-  .note {
-    font-size: 0.85rem;
-    color: #8a8a80;
-    font-style: italic;
-  }
+/* ── Reset & base ───────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #fdfbf7;
+  color: #3d3d38;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+.page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 70px;
+}
+
+/* ── Decorative top border ─────────────────────────────────── */
+.top-border {
+  height: 6px;
+  background: linear-gradient(90deg, #fdfbf7 0%, #d4a373 15%, #4a7c59 50%, #d4a373 85%, #fdfbf7 100%);
+  opacity: 0.4;
+  margin-bottom: 50px;
+}
+
+/* ── Hero ──────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 48px 0 40px;
+  position: relative;
+}
+
+.hero::after {
+  content: "❀";
+  display: block;
+  font-size: 20px;
+  color: #d4a373;
+  margin-top: 24px;
+  opacity: 0.5;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: normal;
+  color: #4a7c59;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  color: #8a8a7a;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  word-spacing: 0.15em;
+}
+
+.hero .tagline {
+  font-size: 1rem;
+  color: #4a7c59;
+  margin-top: 22px;
+  padding: 14px 20px;
+  border: 1px solid #e0dcd0;
+  border-radius: 4px;
+  display: inline-block;
+  background: #f8f6f0;
+}
+
+/* ── Section headers ───────────────────────────────────────── */
+.section {
+  margin-top: 48px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.section-header .line {
+  flex: 1;
+  height: 1px;
+  background: #e6e2d6;
+}
+
+.section-header h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #4a7c59;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.section-header .ornament {
+  color: #d4a373;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* ── Body text ─────────────────────────────────────────────── */
+.intro {
+  font-size: 0.95rem;
+  color: #6a6a60;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+/* ── Card / highlight block ────────────────────────────────── */
+.card {
+  background: #f8f6f0;
+  border-left: 3px solid #d4a373;
+  padding: 20px 24px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.card p {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.card p:last-child { margin-bottom: 0; }
+
+.card .price {
+  font-size: 1.1rem;
+  color: #4a7c59;
+  font-weight: bold;
+}
+
+.card .price small {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #7a7a6c;
+}
+
+/* ── Plant list grid ────────────────────────────────────────── */
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px 20px;
+  margin: 16px 0 20px;
+}
+
+.plant-grid .category {
+  font-size: 0.92rem;
+  color: #4a7c59;
+  font-weight: bold;
+  margin-top: 10px;
+  grid-column: 1 / -1;
+  border-bottom: 1px dotted #ddd8ca;
+  padding-bottom: 3px;
+  margin-bottom: 2px;
+}
+
+.plant-grid li {
+  list-style: none;
+  font-size: 0.92rem;
+  color: #4d4d44;
+  padding: 3px 0 3px 18px;
+  position: relative;
+}
+
+.plant-grid li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #d4a373;
+  font-size: 10px;
+  top: 6px;
+}
+
+/* ── Two-column info rows ──────────────────────────────────── */
+.info-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.info-row .label {
+  min-width: 100px;
+  color: #4a7c59;
+  font-weight: bold;
+}
+
+.info-row .value {
+  color: #3d3d38;
+}
+
+/* ── Specialty badges ──────────────────────────────────────── */
+.specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 10px;
+}
+
+.specialty {
+  border: 1px solid #d4a373;
+  color: #4a7c59;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: #fdfbf7;
+  letter-spacing: 0.02em;
+}
+
+/* ── Contact ───────────────────────────────────────────────── */
+.contact-card {
+  background: #f8f6f0;
+  padding: 24px 28px;
+  border-radius: 4px;
+  margin: 16px 0;
+  border: 1px solid #e6e2d6;
+}
+
+.contact-card p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.contact-card p:last-child { margin-bottom: 0; }
+
+.contact-card .phone {
+  font-size: 1.2rem;
+  color: #4a7c59;
+  letter-spacing: 0.03em;
+}
+
+.contact-card .phone small {
+  font-weight: normal;
+  font-size: 0.85rem;
+  color: #7a7a6c;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid #e6e2d6;
+  text-align: center;
+}
+
+.footer .sig {
+  font-size: 0.85rem;
+  color: #9a9a8c;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.footer .sig-plant {
+  font-size: 18px;
+  color: #d4a373;
+  opacity: 0.5;
+  margin-bottom: 6px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .page { padding: 0 16px 50px; }
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 30px 0 24px; }
+  .plant-grid { grid-template-columns: 1fr; }
+  .section-header h2 { font-size: 1rem; }
+  .top-border { margin-bottom: 30px; }
+  .info-row { flex-direction: column; gap: 2px; }
+  .info-row .label { min-width: 0; }
+}
+
+/* ── Smooth hover ──────────────────────────────────────────── */
+a { color: #4a7c59; text-decoration: none; }
+a:hover { border-bottom: 1px solid #d4a373; }
 </style>
 </head>
 <body>
+
+<div class="top-border"></div>
+
 <div class="page">
 
-<h1>The Potted Shed.</h1>
-<p class="subtitle">Plants &amp; garden visits. Honiton.</p>
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <h1>The Potted Shed</h1>
+  <p class="subtitle">Plants &amp; garden visits &mdash; Honiton, Devon</p>
+  <p class="tagline">Megan's cottage garden nursery, by appointment</p>
+</header>
 
-<h2>Plant sales</h2>
-<p>Perennials, herbs, and cottage garden favourites &mdash; grown in Megan's own garden in Honiton. Open by appointment only. Cash on the day, £3–£7 per 9cm pot.</p>
+<!-- ══════════ PLANT SALES ══════════ -->
+<section class="section">
+  <div class="section-header">
+    <span class="line"></span>
+    <span class="ornament">✿</span>
+    <h2>Plant sales</h2>
+    <span class="ornament">✿</span>
+    <span class="line"></span>
+  </div>
 
-<div class="highlight">
-<p><strong>Perennials</strong> &mdash; hardy geraniums, foxgloves, aquilegias, campanulas, and more.</p>
-<p><strong>Herbs</strong> &mdash; sage, thyme, rosemary, mint, lavender, lemon balm.</p>
-<p><strong>Cottage garden favourites</strong> &mdash; sweet peas, delphiniums, lupins, penstemons, salvias.</p>
-</div>
+  <p class="intro">
+    Perennials, herbs, and cottage garden favourites — grown in Megan's own garden
+    in Honiton, with the kind of care you can't buy in a garden centre.
+  </p>
 
-<p>No e-commerce, no shopfront, no fuss. You come, you look, you choose. Megan will talk you through what grows well where.</p>
+  <div class="card">
+    <p><span class="price">£3–£7</span> <small>per 9cm pot, cash on the day</small></p>
+    <p>Open by appointment only &mdash; Megan will show you round the greenhouse
+    and talk you through what grows well where.</p>
+  </div>
 
-<h2>Garden visits</h2>
-<p>Megan walks your garden with you &mdash; an hour, just the two of you looking at what you have and what might work better. No formal design. No landscaping. Just honest plant advice from someone who has been gardening for ten years.</p>
+  <ul class="plant-grid">
+    <li class="category">Perennials</li>
+    <li>Hardy geraniums</li>
+    <li>Foxgloves</li>
+    <li>Aquilegias</li>
+    <li>Campanulas</li>
+    <li>Astrantias</li>
+    <li>Echinaceas</li>
 
-<div class="highlight">
-<p><strong>£40</strong> &mdash; one-hour walkaround.</p>
-<p>You get a written plant list and a plan tailored to your space.</p>
-</div>
+    <li class="category">Herbs</li>
+    <li>Sage</li>
+    <li>Thyme</li>
+    <li>Rosemary</li>
+    <li>Mint &mdash; several varieties</li>
+    <li>Lavender</li>
+    <li>Lemon balm</li>
 
-<p>Megan specialises in <strong>shade planting</strong> and <strong>small gardens</strong>. If your patch is tricky &mdash; north-facing, dry shade, a cramped courtyard, heavy clay &mdash; she'll have ideas that actually work.</p>
+    <li class="category">Cottage garden favourites</li>
+    <li>Sweet peas</li>
+    <li>Delphiniums</li>
+    <li>Lupins</li>
+    <li>Penstemons</li>
+    <li>Salvias</li>
+    <li>Scabious</li>
+  </ul>
 
-<h2>Contact</h2>
-<p>Call Megan on <strong>01404 850XXX</strong> or text. She'll get back to you within a day.</p>
+  <p>No e-commerce. No shopfront. No fuss. You come, you look, you choose —
+  and you leave with plants that will actually thrive in your patch.</p>
+</section>
 
-<p class="contact"><strong>Find us</strong> &mdash; High Street, Honiton, EX14. Look for the potted shed by the gate.</p>
+<!-- ══════════ GARDEN VISITS ══════════ -->
+<section class="section">
+  <div class="section-header">
+    <span class="line"></span>
+    <span class="ornament">✿</span>
+    <h2>Garden visits</h2>
+    <span class="ornament">✿</span>
+    <span class="line"></span>
+  </div>
 
-<hr>
+  <p class="intro">
+    An hour in your garden with Megan &mdash; honest, practical advice from
+    someone who has been gardening for over ten years.
+  </p>
 
-<p class="note">Ten years gardening, three years selling plants from home. No grand designs &mdash; just good plants and straightforward advice.</p>
+  <div class="card">
+    <p><span class="price">£40</span> <small>for a one-hour walkaround</small></p>
+    <p>You'll receive a written plant list and a practical plan tailored to
+    your space &mdash; shade, sun, soil, and all.</p>
+  </div>
 
-</div>
+  <p>No formal design. No landscaping crews. Just the two of you walking your
+  borders, talking about what you have and what might work better. Megan will
+  take notes as you go and send you home with a clear list of suggestions you
+  can act on yourself.</p>
+
+  <div class="info-row">
+    <span class="label">What you get</span>
+    <span class="value">1-hour walkaround &amp; discussion</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Afterward</span>
+    <span class="value">Written plant list &amp; tailored plan</span>
+  </div>
+  <div class="info-row">
+    <span class="label">Locations</span>
+    <span class="value">Honiton and surrounding villages</span>
+  </div>
+</section>
+
+<!-- ══════════ SPECIALTIES ══════════ -->
+<section class="section">
+  <div class="section-header">
+    <span class="line"></span>
+    <span class="ornament">✿</span>
+    <h2>What Megan does best</h2>
+    <span class="ornament">✿</span>
+    <span class="line"></span>
+  </div>
+
+  <p>Not every garden basks in full sun with perfect loam. Megan has spent years
+  working out what thrives in the trickier corners of Devon gardens &mdash; and
+  she'd love to help you do the same.</p>
+
+  <div class="specialties">
+    <span class="specialty">Shade planting</span>
+    <span class="specialty">Small gardens</span>
+    <span class="specialty">Dry shade</span>
+    <span class="specialty">North-facing borders</span>
+    <span class="specialty">Cottage gardens</span>
+    <span class="specialty">Heavy clay soil</span>
+    <span class="specialty">Courtyards &amp; pots</span>
+    <span class="specialty">Low-maintenance planting</span>
+  </div>
+
+  <p>If your patch is tricky &mdash; north-facing, dry shade, a cramped courtyard,
+  heavy clay &mdash; Megan will have ideas that actually work. No miracle cures,
+  just honest, experienced advice from someone who gardens on Devon soil herself.</p>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section">
+  <div class="section-header">
+    <span class="line"></span>
+    <span class="ornament">✿</span>
+    <h2>Get in touch</h2>
+    <span class="ornament">✿</span>
+    <span class="line"></span>
+  </div>
+
+  <p>To arrange a plant-buying visit or book a garden walkaround, give Megan a
+  call or send a message. She'll get back to you promptly &mdash; and probably
+  ask what kind of soil you have.</p>
+
+  <div class="contact-card">
+    <p class="phone">01404 850XXX &nbsp;<small>call or text</small></p>
+    <p>Megan is usually in the garden, so if she doesn't pick up straight away,
+    leave a message or send a text &mdash; she'll call you back by the end of
+    the day.</p>
+  </div>
+
+  <p style="font-size:0.9rem; color:#8a8a7a; font-style:italic;">
+    Available for garden visits across Honiton and the surrounding villages.
+    Plant sales by appointment only, from Megan's greenhouse.
+  </p>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <p class="sig-plant">❁</p>
+  <p class="sig">The Potted Shed &mdash; Honiton, Devon</p>
+  <p class="sig" style="margin-top:2px;">Ten years of growing. Always more to learn.</p>
+</footer>
+
+</div><!-- /.page -->
 </body>
 </html>
